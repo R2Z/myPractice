@@ -13,7 +13,7 @@ public class CoinChange {
 	}
 
 	public static void main(String args[]) {
-		System.out.println(countWays(new int[] { 1, 2, 3 }, 5));
+		System.out.println(countWays(new int[] { 1, 2, 3 }, 4));
 		System.out.println(dynamic(new int[] { 1, 2, 3 }, 4));
 	}
 

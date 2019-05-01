@@ -12,9 +12,18 @@ public class Java8 implements Test{
 		
 	}
 
+	@Override
+	public void testFunc() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
+ @FunctionalInterface
  interface Test{
+	 
+	 void testFunc();
 	 
 	 public default void myDefault(){
 		 System.out.println("myDefault");
@@ -24,6 +33,12 @@ public class Java8 implements Test{
 	 public static void staticMethod(){
 		 System.out.println("staticMethod");
 	 }
+	 
+	 @Override
+	String toString();
+	 
+	@Override
+	int hashCode(); 
 }
 
  
