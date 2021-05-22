@@ -21,13 +21,13 @@ public class FindKthSmallestLargestElement {
     }
 
     private static int findKmax(int[] arr, int k) {
-        Queue<Integer> maxHeap = new PriorityQueue<>();
+        Queue<Integer> minHeap = new PriorityQueue<>();
         for (int val : arr) {
-            maxHeap.add(val);
-            if (maxHeap.size() > k)
-                maxHeap.remove();
+            minHeap.add(val);
+            if (minHeap.size() > k)
+                minHeap.remove();
         }
-        return maxHeap.remove();
+        return minHeap.remove();
     }
 
     private static int findKmin(int[] arr, int k) {
