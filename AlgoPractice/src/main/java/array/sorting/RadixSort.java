@@ -16,13 +16,14 @@ public class RadixSort {
 
     private static void radixSort(int[] arr) {
         int max = Arrays.stream(arr).max().getAsInt();
+        // do counting sort on each digit starting from 1 to num of digits in max number
         for (int digit = 1; max / digit > 0; digit *= 10) {
             countSort(arr, digit);
         }
     }
 
     private static void countSort(int[] arr, int digit) {
-        Map<Integer, List<Integer>> keyCountMap = new HashMap<Integer, List<Integer>>();
+        Map<Integer, List<Integer>> keyCountMap = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             List<Integer> numList = new ArrayList<>();
             int key = (arr[i] / digit) % 10;
@@ -32,8 +33,8 @@ public class RadixSort {
             numList.add(arr[i]);
             keyCountMap.put(key, numList);
         }
-        //System.out.println(keyCountMap);
         Set<Integer> sortedKeySet = new TreeSet<>(keyCountMap.keySet());
+        // or get min max from original array and iterate from min to max
         // System.out.println("sortedKeySet " + sortedKeySet);
         int[] outputArray = new int[arr.length];
         int outputIndex = 0;
