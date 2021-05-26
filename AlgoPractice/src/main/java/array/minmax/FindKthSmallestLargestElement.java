@@ -1,7 +1,6 @@
 package array.minmax;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -10,7 +9,7 @@ import static array.Utils.print;
 public class FindKthSmallestLargestElement {
     public static void main(String[] args) {
         int[] arr = {7, 10, 4, 3, 20, 15};
-        int k = 2;
+        int k = 3;
         System.out.println("Original Array");
         print(arr);
         int kMin = findKmin(arr, k);
