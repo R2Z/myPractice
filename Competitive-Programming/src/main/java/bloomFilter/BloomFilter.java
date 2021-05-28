@@ -27,7 +27,7 @@ public class BloomFilter {
         BitSet bitSet = new BitSet(NUMBER_OF_BITS);
 
         // Read the words into an array (4000 words)
-        List<String> dictionary = new ArrayList<>();
+        List<String> dictionary = new ArrayList();
         File file = new File("D:/app/GeekPractice/Competitive-Programming/src/main/java/bloomFilter/dictionary.txt");
         
         Path path = Paths.get(file.getAbsolutePath());

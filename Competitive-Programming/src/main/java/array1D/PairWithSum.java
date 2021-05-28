@@ -80,7 +80,7 @@ public class PairWithSum {
 
 	private static void pairSum(int arr[], int sum) {
 
-		Map<Integer, Integer> mp = new HashMap<>();
+		Map<Integer, Integer> mp = new HashMap();
 
 		for (int i = 0; i < arr.length; i++) {
 			int x = sum - arr[i];
