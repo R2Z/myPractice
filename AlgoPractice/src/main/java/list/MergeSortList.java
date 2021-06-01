@@ -18,7 +18,6 @@ public class MergeSortList {
         LinkedList sorted = mergeSort(ll.head, ll.tail);
         ListOperations.print(sorted.head);
         int arr2[] = Arrays.stream(arr).sorted().toArray();
-        System.out.println("");
         for (int i = 0; i < arr2.length; i++) {
             System.out.print(arr2[i] + "->");
         }
