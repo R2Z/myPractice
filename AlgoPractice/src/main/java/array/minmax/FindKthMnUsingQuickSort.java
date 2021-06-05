@@ -1,19 +1,18 @@
 package array.minmax;
 
-import java.util.Arrays;
+import array.Utils;
 
-import static array.Utils.print;
-import static array.Utils.swap;
+import java.util.Arrays;
 
 public class FindKthMnUsingQuickSort {
     public static void main(String[] args) {
         int[] arr = {7, 10, 4, 3, 20, 15};
         int k = 6;
         System.out.println("Original Array");
-        print(arr);
+        Utils.print(arr);
         int kMin = findKmin(arr, k, 0, arr.length - 1);
         System.out.println("Sorted Array");
-        print(Arrays.stream(arr).sorted().toArray());
+        Utils.print(Arrays.stream(arr).sorted().toArray());
         System.out.println(k + " kMin " + kMin);
     }
 
@@ -42,10 +41,10 @@ public class FindKthMnUsingQuickSort {
         int pivotIndex = low;
         for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
-                swap(arr, pivotIndex++, j);
+                Utils.swap(arr, pivotIndex++, j);
             }
         }
-        swap(arr, pivotIndex, high);
+        Utils.swap(arr, pivotIndex, high);
         return pivotIndex;
     }
 }

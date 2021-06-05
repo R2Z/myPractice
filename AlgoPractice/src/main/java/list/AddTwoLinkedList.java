@@ -68,13 +68,13 @@ public class AddTwoLinkedList {
     private static RandomNode getList2() {
         RandomNode n1 = new RandomNode(7);
         RandomNode n2 = new RandomNode(9);
-        RandomNode n3 = new RandomNode(8);
-        RandomNode n4 = new RandomNode(6);
+       /* RandomNode n3 = new RandomNode(8);
+        RandomNode n4 = new RandomNode(6);*/
 
         n1.next = n2;
-        n2.next = n3;
-        n3.next = n4;
-        n4.next = null;
+        n2.next = null;
+      /*  n3.next = n4;
+        n4.next = null;*/
 
         return n1;
     }

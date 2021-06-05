@@ -1,8 +1,7 @@
 package array.test;
 
-import array.Utils;
 
-import java.util.Arrays;
+import array.Utils;
 
 public class ReArrangeArray {
     public static void main(String[] args) {

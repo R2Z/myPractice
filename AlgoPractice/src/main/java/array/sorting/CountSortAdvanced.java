@@ -1,17 +1,18 @@
 package array.sorting;
 
+import array.Utils;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static array.Utils.print;
 
 public class CountSortAdvanced {
 
     public static void main(String[] args) {
         int[] arr = {-1, -2, -1, 2, -3, -4, 6, 2, 0, 8};
         //int[] arr = {1, 4, 1, 2, 7, 5, 2};
-        print(arr);
+        Utils.print(arr);
         countSortAdvanced(arr, arr.length);
     }
 
@@ -39,7 +40,7 @@ public class CountSortAdvanced {
                 outputIndex = populateOutputArray(outputArray, outputIndex, element, times);
             }
         }
-        print(outputArray);
+        Utils.print(outputArray);
     }
 
     private static int populateOutputArray(int[] outputArray, int outputIndex, int value, int times) {

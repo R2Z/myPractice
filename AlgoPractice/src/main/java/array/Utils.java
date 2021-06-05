@@ -1,5 +1,7 @@
 package array;
 
+import list.RandomNode;
+
 public class Utils {
 
     public static void swap(int arr[], int x, int y) {
@@ -18,6 +20,17 @@ public class Utils {
     public static void copyArray(int src[], int dest[]) {
         for (int i = 0; i < src.length; i++) {
             dest[i] = src[i];
+        }
+    }
+
+    public static void print(RandomNode head) {
+        System.out.println(" ");
+        while (head != null) {
+            if (head.next != null)
+                System.out.print(head.val + "->");
+            else
+                System.out.print(head.val);
+            head = head.next;
         }
     }
 }

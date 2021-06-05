@@ -1,13 +1,14 @@
 package array.sorting;
 
+import array.Utils;
+
 import java.util.Arrays;
 
-import static array.Utils.print;
 
 public class CountSort {
     public static void main(String[] args) {
         int[] arr = {1, 4, 1, 2, 7, 5, 2};
-        print(arr);
+        Utils.print(arr);
         countSort(arr, arr.length);
     }
 
@@ -19,13 +20,13 @@ public class CountSort {
         int[] countArr = new int[max + 1];
         Arrays.fill(countArr, 0);
         System.out.println("initial countArr");
-        print(countArr);
+        Utils.print(countArr);
         // populate countArr with number of times element from main array exists
         for (int i = 0; i < arr.length; i++) {
             countArr[arr[i]] = countArr[arr[i]] + 1;
         }
         System.out.println("countArr populated with number of times element from main arr");
-        print(countArr);
+        Utils.print(countArr);
         // iterate over countArr
         // find current Index
         // find current Index value
@@ -38,7 +39,7 @@ public class CountSort {
                 outPutIndex = populateOutPutArray(outPutArr, outPutIndex, countIndex, value);
             }
         }
-        print(outPutArr);
+        Utils.print(outPutArr);
     }
 
     private static int populateOutPutArray(int[] outPutArr, int outPutIndex, int value, int counts) {

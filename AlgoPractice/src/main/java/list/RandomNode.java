@@ -1,11 +1,9 @@
 package list;
 
-import java.util.Objects;
-
 public class RandomNode {
-    int val;
-    RandomNode next;
-    RandomNode random;
+    public int val;
+    public RandomNode next;
+    public RandomNode random;
 
     public RandomNode(int val) {
         this.val = val;

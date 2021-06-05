@@ -1,21 +1,22 @@
 package array.minmax;
 
+import array.Utils;
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import static array.Utils.print;
 
 public class FindKthSmallestLargestElement {
     public static void main(String[] args) {
         int[] arr = {7, 10, 4, 3, 20, 15};
         int k = 3;
         System.out.println("Original Array");
-        print(arr);
+        Utils.print(arr);
         int kMin = findKmin(arr, k);
         int kMax = findKmax(arr, k);
         System.out.println("Sorted Array");
-        print(Arrays.stream(arr).sorted().toArray());
+        Utils.print(Arrays.stream(arr).sorted().toArray());
         System.out.println("kMin " + kMin + " kMax " + kMax);
     }
 

@@ -6,9 +6,14 @@ public class RandomLinked {
     int size;
 
     public void print() {
+        System.out.println("");
         RandomNode tmp = head;
         while (tmp != null) {
-            System.out.print(tmp.val + "->");
+            if (tmp.next == null) {
+                System.out.print(tmp.val + ".");
+            } else {
+                System.out.print(tmp.val + "->");
+            }
             tmp = tmp.next;
         }
     }
@@ -26,7 +31,7 @@ public class RandomLinked {
             tail = head;
         } else {
             RandomNode tmp = head;
-            while (tmp != null) {
+            while (tmp.next != null) {
                 tmp = tmp.next;
             }
             tmp.next = node;

@@ -1,15 +1,15 @@
 package array.sorting;
 
-import static array.Utils.print;
-import static array.Utils.swap;
+
+import array.Utils;
 
 public class QuickSort {
 
     public static void main(String[] args) {
         int arr[] = {10, 80, 30, 90, 40, 50, 70};
-        print(arr);
+        Utils.print(arr);
         quickSort(arr, 0, arr.length - 1);
-        print(arr);
+        Utils.print(arr);
     }
 
     private static void quickSort(int[] arr, int low, int high) {
@@ -25,10 +25,10 @@ public class QuickSort {
         int pI = low - 1;
         for (int j = low; j <= high - 1; j++) {
             if (arr[j] < pivot) {
-                swap(arr, ++pI, j);
+                Utils.swap(arr, ++pI, j);
             }
         }
-        swap(arr, ++pI, high);
+        Utils.swap(arr, ++pI, high);
         return pI;
     }
 }

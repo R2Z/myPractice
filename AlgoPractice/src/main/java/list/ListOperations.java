@@ -46,7 +46,7 @@ public class ListOperations {
             if (tmp.next != null) {
                 System.out.print(tmp.val + "->");
             } else {
-                System.out.print(tmp.val+"->Null");
+                System.out.print(tmp.val + "->Null");
             }
             tmp = tmp.next;
         }
@@ -111,8 +111,8 @@ public class ListOperations {
 }
 
 class Node {
-    int val;
-    Node next;
+    public int val;
+    public Node next;
 
     public Node(int val) {
         this.val = val;

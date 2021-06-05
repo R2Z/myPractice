@@ -1,14 +1,15 @@
 package array.sorting;
 
-import static array.Utils.print;
+
+import array.Utils;
 
 public class MergeSort {
 
     public static void main(String[] args) {
         int arr[] = {10, 80, 30, 90, 40, 50, 70};
-        print(arr);
+        Utils.print(arr);
         mergeSort(arr, 0, arr.length - 1);
-        print(arr);
+        Utils.print(arr);
     }
 
     private static void mergeSort(int[] arr, int low, int high) {

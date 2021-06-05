@@ -1,17 +1,17 @@
 package array.sorting;
 
+import array.Utils;
+
 import java.util.*;
 
-import static array.Utils.copyArray;
-import static array.Utils.print;
 
 public class RadixSort {
     public static void main(String[] args) {
         int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
-        print(arr);
+        Utils.print(arr);
         radixSort(arr);
         System.out.println("After radixSort ");
-        print(arr);
+        Utils.print(arr);
     }
 
     private static void radixSort(int[] arr) {
@@ -43,9 +43,9 @@ public class RadixSort {
         }
         // 722 465 1465 273 383
         // digit 1 = {2=1, 3=2, 5=2}
-        copyArray(outputArray, arr);
+        Utils.copyArray(outputArray, arr);
         System.out.println("digit " + digit);
-        print(arr);
+        Utils.print(arr);
     }
 
     private static int populateOutPutArray(int[] outputArray, int outputIndex, List<Integer> numList) {
