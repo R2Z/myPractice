@@ -8,18 +8,44 @@ public class BestSum {
     public static void main(String[] args) {
         //int[] arr = bestSum(7, new int[]{3, 4, 7, 5});
         //int[] arr = bestSum(8, new int[]{2, 3, 5});
-        int[] arr = bestSumDP(100, new int[]{1, 2, 5, 25}, null);
+        /*int[] arr = bestSumDP(100, new int[]{1, 2, 5, 25}, null);
         //int[] arr = bestSumDP(8, new int[]{1, 4, 5}, null);
         if (arr != null) {
             for (int val : arr)
                 System.out.print(val + " ");
         }
-        System.out.println("DP");
-        arr = bestSum(100, new int[]{1, 2, 5, 25});
+        System.out.println("DP");*/
+        int[] arr = bestSumTable(100, new int[]{1, 2, 5, 25});
         if (arr != null) {
             for (int val : arr)
                 System.out.print(val + " ");
         }
+    }
+
+    private static int[] copyAndCreate(int[] arr, int val) {
+        int[] newArr = Arrays.copyOf(arr, arr.length + 1);
+        newArr[arr.length] = val;
+        return newArr;
+    }
+
+    private static int[] bestSumTable(int targetSum, int[] arr) {
+        int[][] table = new int[targetSum + 1][];
+        int[] init = new int[1];
+        table[0] = init;
+
+        for (int i = 0; i <= targetSum; i++) {
+            if (table[i] != null) {
+                for (int val : arr) {
+                    if (i + val <= targetSum) {
+                        int[] currSum = copyAndCreate(table[i], val);
+                        if (table[i + val] == null || table[i + val].length > currSum.length) {
+                            table[i + val] = currSum;
+                        }
+                    }
+                }
+            }
+        }
+        return table[targetSum];
     }
 
     private static int[] bestSum(int targetSum, int[] arr) {

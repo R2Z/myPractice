@@ -1,18 +1,20 @@
 package dp;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Fibonacci {
     public static void main(String[] args) {
-
-        for (int i = 0; i <= 50; i++) {
+        long op = fibTableDP(100);
+        System.out.println(op);
+        /*for (int i = 0; i <= 50; i++) {
             long t1 = System.currentTimeMillis();
             long num = recurDPFibonacci(i, null);
             System.out.println("For num " + i + " Time taken in sec's " + (System.currentTimeMillis() - t1));
             System.out.println(num);
-        }
+        }*/
     }
 
     private static long iterativeDPFibonacci(int num) {
@@ -64,5 +66,15 @@ public class Fibonacci {
         long result = recurDPFibonacci(num - 1, map) + recurDPFibonacci(num - 2, map);
         map.put(num, result);
         return map.get(num);
+    }
+
+    private static long fibTableDP(int num) {
+        long[] table = new long[num + 2];
+        table[0] = 1;
+        table[1] = 1;
+        for (int i = 2; i <= num; i++) {
+            table[i] = table[i - 2] + table[i - 1];
+        }
+        return table[num];
     }
 }

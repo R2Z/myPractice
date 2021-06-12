@@ -65,5 +65,4 @@ public class CanConstruct {
         map.put(targetStr, false);
         return false;
     }
-
 }

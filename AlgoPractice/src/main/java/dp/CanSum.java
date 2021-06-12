@@ -6,7 +6,7 @@ import java.util.Map;
 public class CanSum {
 
     public static void main(String[] args) {
-        new Thread(() -> {
+        /*new Thread(() -> {
             long t1 = System.currentTimeMillis();
             boolean result = canSum(7, new int[]{5, 3, 4, 7});
             long t2 = System.currentTimeMillis();
@@ -22,7 +22,8 @@ public class CanSum {
             System.out.println(result + " DP t1 " + (t2 - t1) / 1000);
             result = canSumDP(300, new int[]{7, 14}, null);
             System.out.println(result + " DP t2 " + (System.currentTimeMillis() - t2) / 1000);
-        }).start();
+        }).start();*/
+        System.out.println(canSumDPTabular(7, new int[]{5, 3, 4, 7}));
     }
 
     private static boolean canSum(int targetSum, int[] arr) {
@@ -57,5 +58,20 @@ public class CanSum {
         }
         memo.put(targetSum, false);
         return false;
+    }
+
+    private static boolean canSumDPTabular(int targetSum, int[] arr) {
+
+        boolean[] table = new boolean[targetSum + 1];
+        table[0] = true;
+
+        for (int i = 0; i <= targetSum; i++) {
+            for (int val : arr) {
+                if (table[i] && (i + val <= targetSum)) {
+                    table[i + val] = true;
+                }
+            }
+        }
+        return table[targetSum];
     }
 }

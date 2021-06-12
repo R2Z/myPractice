@@ -1,9 +1,6 @@
 package dp;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HowSum {
     public static void main(String[] args) {
@@ -14,8 +11,9 @@ public class HowSum {
         System.out.println(result);*/
 
         //result = howSumDP(7, new int[]{3, 4, 7, 5}, null);
-       // System.out.println(result);
-        result = howSumDP(300, new int[]{7, 14}, null);
+        // System.out.println(result);
+        // result = howSumDP(300, new int[]{7, 14}, null);
+        howSumDPTabular(7, new int[]{3, 4, 7, 5});
         System.out.println(result);
 
     }
@@ -59,6 +57,31 @@ public class HowSum {
         }
         map.put(targetSum, null);
         return null;
+    }
+
+    private static int[] copyAndCreate(int[] arr, int val) {
+        int[] newArr = Arrays.copyOf(arr, arr.length + 1);
+        newArr[arr.length] = val;
+        return newArr;
+    }
+
+    /// 2D array row is sum cols are all possible values to generate that sum
+    private static int[] howSumDPTabular(int targetSum, int[] arr) {
+
+        int[][] table = new int[targetSum + 1][];
+        int[] init = new int[1];
+        table[0] = init;
+
+        for (int i = 0; i <= targetSum; i++) {
+            if (table[i] != null) {
+                for (int val : arr) {
+                    if (i + val < table.length) {
+                        table[i + val] = copyAndCreate(table[i], val);
+                    }
+                }
+            }
+        }
+        return table[targetSum];
     }
 
 }
