@@ -9,8 +9,8 @@ public class JumpingStaircase {
 
     public static void main(String[] args) {
 
-        int nofStairs = 20;
-        int[] steps = {1, 2, 3};
+        int nofStairs = 21;
+        int[] steps = {1, 11,10};
        /* List<String> possibleWays = howSum(steps, nofStairs);
         if (possibleWays != null)
             System.out.println(possibleWays.size());
@@ -33,7 +33,7 @@ public class JumpingStaircase {
         long diff = (t2 - t1) / 1000;
         System.out.println(" time(s) " + diff);
         if (possibleWays != null) {
-            System.out.println("possibleWays " + possibleWays.size());
+            System.out.println("possibleWays " + possibleWays);
         }
 
         t1 = System.currentTimeMillis();
