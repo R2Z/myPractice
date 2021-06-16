@@ -41,6 +41,9 @@ public class MaxIncreasingSubSequence {
     }
 
     private static int getLIS(int[] arr) {
+        // add elements to tree set , while adding check if
+        // there is any element greater than new element then remove GE
+        // at the end set will contain increasing sub sequence
         TreeSet<Integer> set = new TreeSet<>();
         for (int val : arr) {
             Integer ceil = set.ceiling(val);
