@@ -14,10 +14,10 @@ public class FrogJump {
         if (curr == steps || curr > steps) {
             return 0;
         }
+
         if (arr[curr] == 0) {
             return minSteps;
         }
-
 
         for (int j = curr + 1; j <= curr + arr[curr]; j++) {
             int curMin = 1 + minJump(arr, j, steps);
