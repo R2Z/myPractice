@@ -14,6 +14,7 @@ public class HamiltonianPathAndCycle {
         g.addEdge(0, 1, 10);
         g.addEdge(1, 2, 10);
         g.addEdge(2, 3, 10);
+        g.addEdge(2, 5, 10);
         g.addEdge(0, 3, 40);
         g.addEdge(3, 4, 2);
         g.addEdge(4, 5, 3);
@@ -21,21 +22,31 @@ public class HamiltonianPathAndCycle {
         g.addEdge(4, 6, 8);
 
         Set<Integer> visited = new HashSet<>();
-        for (int i = 0; i < V; i++) {
-            printHamiltonianPaths(g, visited, i, i, i + "-");
-        }
+        printHamiltonianPaths(g, visited, 0, 0, 0 + "");
     }
 
     private static void printHamiltonianPaths(GraphWithWeight g, Set<Integer> visited, int v, int originalVertex, String psf) {
 
-        if (g.graph.length == visited.size()) {
-            System.out.println("psf " + psf);
+        if (g.graph.length - 1 == visited.size()) {
+            boolean isCycle = false;
+            List<GraphWithWeight.Edge> list = g.graph[v];
+            //Hamiltonian cycle has start - end node edges
+            for (GraphWithWeight.Edge e : list) {
+                if (e.nbr == originalVertex) {
+                    isCycle = true;
+                }
+            }
+            if (isCycle) {
+                System.out.println("psf " + psf + "*");
+            } else {
+                System.out.println("psf " + psf + ".");
+            }
         }
 
         visited.add(v);
         List<GraphWithWeight.Edge> list = g.graph[v];
         for (GraphWithWeight.Edge e : list) {
-            if (!visited.contains(e.src)) {
+            if (!visited.contains(e.nbr)) {
                 printHamiltonianPaths(g, visited, e.nbr, originalVertex, psf + "-" + e.nbr);
             }
         }
