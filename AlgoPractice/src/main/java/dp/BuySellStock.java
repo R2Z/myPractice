@@ -14,18 +14,24 @@ public class BuySellStock {
         int fee = 2;
         int cooling = 1;
         System.out.println(buSellStockWithTransactionFee(prices, fee));
-        int[] prices1 = {1, 2, 3, 0, 2};
+        //int[] prices1 = {1, 2, 3, 0, 2};
+        int[] prices1 = {2, 0, 5, 1, 8};
         System.out.println(buySellStockWithCooling(prices1, 1));
 
-        System.out.println(buySellStocksWithAnyNumberOfTransactions(prices1));
+        /*System.out.println(buySellStocksWithAnyNumberOfTransactions(prices1));
         System.out.println(buySellStocksWithAnyNumberOfTransactions2(prices1));
 
         int[] prices3 = {5, 11, 3, 50, 60, 90};
         System.out.println(buySellStocksWithTwoTransactions(prices3));
+        System.out.println(buySellStocksWithTwoTransactions2(prices3));*/
 
     }
 
     private static int buySellStockWithCooling(int[] prices, int cooling) {
+
+        if(prices.length < 2){
+            return 0;
+        }
 
         int[] buy = new int[prices.length];
         int[] sell = new int[prices.length];
@@ -33,13 +39,11 @@ public class BuySellStock {
         buy[0] = prices[0];
         sell[0] = 0;
 
-        for (int T = 1; T <= cooling; T++) {
-            buy[T] = Integer.min(buy[T - 1], prices[T] - sell[T - 1]);
-            sell[T] = Integer.max(sell[T - 1], prices[T] - buy[T - 1]);
-        }
+        buy[1] = Integer.min(buy[0], prices[1] - sell[0]);
+        sell[1] = Integer.max(sell[0], prices[1] - buy[0]);
 
 
-        for (int T = cooling + 1; T < prices.length; T++) {
+        for (int T = 2; T < prices.length; T++) {
             buy[T] = Integer.min(buy[T - 1], prices[T] - sell[T - 2]);
             sell[T] = Integer.max(sell[T - 1], prices[T] - buy[T - 1]);
         }
@@ -60,13 +64,6 @@ public class BuySellStock {
             profitSoFar = sell[i];
         }
         return profitSoFar;
-    }
-
-    private static void addToQueue(Queue<Integer> queue, int profit, int k) {
-        queue.add(profit);
-        if (queue.size() > k) {
-            queue.remove();
-        }
     }
 
     private static int buySellStocksWithAnyNumberOfTransactions(int[] prices) {
@@ -118,4 +115,34 @@ public class BuySellStock {
         }
         return profit[k][prices.length - 1];
     }
+
+    private static int buySellStocksWithTwoTransactions2(int[] prices) {
+
+        int k = 2;
+        int[] profit1 = new int[prices.length];
+        int[] profit2 = new int[prices.length];
+
+        int[] currProfit, previousProfit;
+
+        for (int T = 1; T < k + 1; T++) {
+
+            if (T % 2 == 1) {
+                previousProfit = profit1;
+                currProfit = profit2;
+            } else {
+                previousProfit = profit2;
+                currProfit = profit1;
+            }
+            int profitSoFar = Integer.MIN_VALUE;
+            for (int D = 1; D < prices.length; D++) {
+                profitSoFar = Integer.max(profitSoFar, previousProfit[D - 1] - prices[D - 1]);
+                currProfit[D] = Integer.max(currProfit[D - 1], prices[D] + profitSoFar);
+            }
+        }
+
+        if (k % 2 == 0) return profit1[prices.length - 1];
+        else return profit2[prices.length - 1];
+    }
+
+
 }
