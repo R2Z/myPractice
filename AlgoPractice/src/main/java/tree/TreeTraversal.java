@@ -1,7 +1,6 @@
 package tree;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -29,7 +28,37 @@ public class TreeTraversal {
         if (!path.isEmpty())
             System.out.println(path);*/
         //System.out.println(heightOfTree(root));
-        printKLevelNodes(root, 2);
+        // printKLevelNodes(root, 2);
+        // printSingleChild(root, null);
+        removeLeaves(root);
+        printLevelOrder(root);
+    }
+
+    private static Node removeLeaves(Node node) {
+
+        if (node == null || (node.left == null && node.right == null)) {
+            return null;
+        }
+
+        node.left = removeLeaves(node.left);
+        node.right = removeLeaves(node.right);
+
+        return node;
+    }
+
+    private static void printSingleChild(Node node, Node parrent) {
+
+        if (node == null) {
+            return;
+        }
+
+        if (parrent != null && ((parrent.left == null && parrent.right != null) || parrent.right == null && parrent.left != null)) {
+            System.out.println(parrent.data);
+        }
+
+        printSingleChild(node.left, node);
+        printSingleChild(node.right, node);
+
     }
 
     private static void printKLevelNodes(Node root, int k) {
@@ -133,7 +162,7 @@ public class TreeTraversal {
 }
 
 class Node {
-    Integer data;
+    public Integer data;
     public Node left;
     public Node right;
 
