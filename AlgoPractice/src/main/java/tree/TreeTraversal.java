@@ -107,7 +107,7 @@ public class TreeTraversal {
         return false;
     }
 
-    private static void printLevelOrder(Node root) {
+    static void printLevelOrder(Node root) {
         Queue<Node> que = new ArrayDeque<>();
         que.add(root);
         while (!que.isEmpty()) {
@@ -121,7 +121,7 @@ public class TreeTraversal {
         }
     }
 
-    private static Node insertLevelOrder(Integer[] arr, int i) {
+    static Node insertLevelOrder(Integer[] arr, int i) {
         Node root = null;
         if (i < arr.length) {
             root = new Node(arr[i], null, null);

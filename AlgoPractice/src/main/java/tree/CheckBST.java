@@ -36,11 +36,14 @@ public class CheckBST {
         max_dd = 0;
         printDiagonalSum(root);*/
         System.out.println(hasTargetSum(root, 8));
-        findMaxSumLeafToRoot(root, 0);
+        /*findMaxSumLeafToRoot(root, 0);
         System.out.println("findMaxSumLeafToRoot " + max_sum);
         List<Integer> result = new ArrayList<>();
         System.out.println(hasGivenSumFromRootToLeaf(root, result, 17));
-        System.out.println(result);
+        System.out.println(result);*/
+        List<Integer> result = new ArrayList<>();
+        findAllNodesSLeafToRoot(root, result);
+        System.out.println(allNodes);
     }
 
     private static boolean hasGivenSumFromRootToLeaf(Node node, List<Integer> result, int targetSum) {
@@ -62,6 +65,21 @@ public class CheckBST {
             result.add(node.data);
         }
         return found;
+    }
+
+    static List<List<Integer>> allNodes = new ArrayList<>();
+
+    private static void findAllNodesSLeafToRoot(Node node, List<Integer> currList) {
+        if (node == null) {
+            return;
+        }
+        currList.add(node.data);
+        if (node.left == null && node.right == null) {
+            allNodes.add(currList);
+        } else {
+            findAllNodesSLeafToRoot(node.left, currList);
+            findAllNodesSLeafToRoot(node.right, currList);
+        }
     }
 
     static int max_sum = Integer.MIN_VALUE;
@@ -234,7 +252,7 @@ public class CheckBST {
         int max;
     }
 
-    private static void printLevelOrder(Node root) {
+    static void printLevelOrder(Node root) {
         Queue<Node> que = new ArrayDeque<>();
         que.add(root);
         while (!que.isEmpty()) {
@@ -412,7 +430,7 @@ public class CheckBST {
         int right;
     }
 
-    private static Node insertLevelOrder(Integer[] arr, int i) {
+    static Node insertLevelOrder(Integer[] arr, int i) {
         Node root = null;
         if (i < arr.length) {
             root = new Node(arr[i], null, null);
