@@ -76,6 +76,8 @@ public class ListOperations {
     }
 
     private static void findIntersection() {
+
+        // create list
         LinkedList ll1 = new LinkedList();
         for (int i = 0; i < 10; i++) {
             ll1.addNodeAtEnd(new Node(i));
@@ -86,6 +88,7 @@ public class ListOperations {
             ll2.addNodeAtEnd(new Node(i));
         }
 
+        //
         int sizeDiff = Math.abs(ll1.size - ll2.size);
         Node maxList = null;
         if (ll1.size > ll2.size) maxList = ll1.head;
