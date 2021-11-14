@@ -3,8 +3,10 @@ package array.searching;
 public class Celing {
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 8, 10, 10, 12, 19};
-        int target = 3;
+       /* int[] arr = {1, 2, 8, 10, 13, 12, 19};
+        int target = 3;*/
+        int[] arr = {1, 2, 8, 10, 13};
+        int target = 7;
         int ans = ceil(arr, 0, arr.length - 1, target);
         System.out.println(ans);
         ans = floor(arr, 0, arr.length - 1, target);

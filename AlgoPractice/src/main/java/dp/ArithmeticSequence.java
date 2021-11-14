@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class ArithmeticSequence {
     public static void main(String[] args) {
+        //ffgg
         int arr[] = {0, 2000000000, -294967296};
         int count = getAPSubSequences(arr);
         System.out.println(count);
