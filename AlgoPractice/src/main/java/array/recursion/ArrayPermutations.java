@@ -6,7 +6,7 @@ public class ArrayPermutations {
 
     public static void main(String[] args) throws Exception {
         int nboxes = 3;
-        int ritems = 2;
+        int ritems = 3;
         //printAllPermutations(new int[nboxes], 1, ritems);
         System.out.println("permutations");
         printAllPermutations(new int[nboxes], 1, ritems);
