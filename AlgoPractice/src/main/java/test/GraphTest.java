@@ -1,7 +1,5 @@
 package test;
 
-import scala.Int;
-
 import java.util.*;
 
 public class GraphTest {

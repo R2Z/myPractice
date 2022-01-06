@@ -1,7 +1,5 @@
 package tree;
 
-import scala.Int;
-
 import java.util.*;
 
 public class CheckBST {

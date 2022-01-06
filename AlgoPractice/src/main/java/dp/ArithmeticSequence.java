@@ -1,7 +1,5 @@
 package dp;
 
-import scala.Int;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -3,8 +3,7 @@ package graph;
 import java.util.*;
 
 public class GraphMap {
-    // TreeSet is used to get clear
-// understand of graph.
+    // TreeSet is used to get clear understand of graph.
     public Map<Integer, Set<Integer>> graph;
 
     // Graph Constructor
@@ -17,10 +16,8 @@ public class GraphMap {
 
     // Adds an edge to an undirected graph
     public void addEdge(int src, int dest) {
-
         // Add an edge from src to dest into the set
         graph.get(src).add(dest);
-
         // Since graph is undirected, add an edge
         // from dest to src into the set
         graph.get(dest).add(src);
