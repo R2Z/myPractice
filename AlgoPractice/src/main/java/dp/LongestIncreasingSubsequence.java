@@ -6,8 +6,15 @@ import java.util.Map;
 
 public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
-        int[] nums = {3, 10, 2, 15, 20, 25, 26};
-        //int[] nums = {3, 10, 2, 1, 20};
+        //int[] nums = {3, 10, 2, 15, 20, 25, 26};
+        int[] nums = {3, 10, 2, 1, 20};
+        extractLIS(nums);
+        System.out.println(LIS(nums, 0, 1, -1));
+        System.out.println(LIS(nums, 0, 1, -1, new HashMap<>()));
+        System.out.println(LIS2(nums, 0));
+    }
+
+    private static void extractLIS(int[] nums) {
         int[] dp = new int[nums.length];
         Arrays.fill(dp, 1);
         int MAX = Integer.MIN_VALUE;
@@ -22,8 +29,6 @@ public class LongestIncreasingSubsequence {
             MAX = Integer.max(dp[i], MAX);
         }
         System.out.println(MAX);
-        System.out.println(LIS(nums, 0, 1, -1));
-        System.out.println(LIS(nums, 0, 1, -1, new HashMap<>()));
     }
 
     static int LIS(int[] arr, int curr, int next, int ci) {
@@ -66,6 +71,25 @@ public class LongestIncreasingSubsequence {
         }
         map.put(key, max);
         return max;
+    }
+
+    static int LIS2(int[] arr, int pi) {
+
+        if (pi >= arr.length - 1) {
+            return 1;
+        }
+        int MAX = Integer.MIN_VALUE;
+
+        for (int i = pi + 1; i < arr.length; i++) {
+            int currMax;
+            if (arr[i] > arr[pi]) {
+                currMax = 1 + LIS2(arr, i);
+            } else {
+                currMax = LIS2(arr, i);
+            }
+            MAX = Integer.max(MAX, currMax);
+        }
+        return MAX;
     }
 
 }
